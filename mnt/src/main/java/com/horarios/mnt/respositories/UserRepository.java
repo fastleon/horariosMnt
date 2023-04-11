@@ -1,2 +1,10 @@
-package com.horarios.mnt.respositories;public interface UserRepository {
+package com.horarios.mnt.respositories;
+
+import com.horarios.mnt.models.User;
+import org.springframework.data.repository.CrudRepository;
+import org.springframework.stereotype.Repository;
+
+@Repository
+public interface UserRepository extends CrudRepository<User, Long> {
+
 }
