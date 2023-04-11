@@ -14,6 +14,7 @@ public class UserServiceImpl implements UserService{
     @Autowired
     UserRepository userRepository;
 
+
     @Override
     public User createUser(User user) {
         return userRepository.save(user);
@@ -25,12 +26,12 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public Optional<User> getUser(Long id) {
+    public Optional<User> getUserById(Long id) {
         return userRepository.findById(id);
     }
 
     @Override
-    public Optional <User> updateUser(User user, Long id) {
+    public Optional<User> updateUser(User user, Long id) {
         Optional<User> resultado = Optional.empty();
         if (userRepository.findById(id).isPresent()) {
             User user1 = new User();
@@ -45,7 +46,7 @@ public class UserServiceImpl implements UserService{
     }
 
     @Override
-    public void deleteUser(Long id) {
-
+    public void deleteUserbyId(Long id) {
+        userRepository.deleteById(id);
     }
 }
