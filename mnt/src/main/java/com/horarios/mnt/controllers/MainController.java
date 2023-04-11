@@ -1,10 +1,19 @@
 package com.horarios.mnt.controllers;
 
 import com.horarios.mnt.models.User;
+import com.horarios.mnt.services.UserService;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.stereotype.Controller;
 
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 public class MainController {
+
+    @Autowired
+    private UserService userService;
 
     @GetMapping("/")
     public String pruebaConexion(){
@@ -12,14 +21,14 @@ public class MainController {
     }
 
     @PostMapping("/addUsuario")
-    public String crearUsuario(User user){
-        return ("Creacion de usuario en la base de datos");
-        //return
+    public User crearUsuario(@RequestBody User user){
+        //("Creacion de usuario en la base de datos");
+        System.err.println(user.toString());
+        return userService.createUser(user);
     }
     @GetMapping("/usuarios")
-    public String verUsuarios(){
-        return ("Visualizar lista de trabajadores con opcion de editar y eliminar");
-        //return List<User>
+    public List<User> getUsers(){
+        return userService.getUsers();
     }
 
     @GetMapping("/usuarios/{id}")
