@@ -17,7 +17,7 @@ import java.util.Optional;
 public class MainController {
     @Autowired
     private UserService userService;
-    private JsonImportService jsonImportService;
+    private JsonImportService jsonImportService = new JsonImportService();
 
     @GetMapping("/")
     public String pruebaConexion(){
@@ -27,15 +27,7 @@ public class MainController {
     //-------------------------CONTROL PARA INGRESO DE DATOS DEL JSON DE INFORMACION DEL HUELLERO
     @GetMapping("/import-time")
     public List<Evento> importData(){
-        System.err.println("Entre a la funcion en la controladora para importar Json");
-        Evento evento1 = new Evento(1l,"fecha1", 123,"Alejandro Leon");
-        Evento evento2 = new Evento(2l,"fecha2", 223,"Paola Palacios");
-        Evento evento3 = new Evento(3l,"fecha3", 323,"Christian Ruiz");
-        ArrayList<Evento> eventos = new ArrayList<Evento>() {};
-        eventos.add(evento1);
-        eventos.add(evento2);
-        eventos.add(evento3);
-        return eventos;
+        return jsonImportService.importData();
     }
 
     //---------------------------------------------FIN-------------------------------------------

@@ -1,24 +1,42 @@
 package com.horarios.mnt.models;
 
+import jakarta.persistence.*;
+
 import java.sql.Date;
 
+@Entity
+@Table(name="Eventos")
 public class Evento {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    @Column(nullable = false)
     private String date;
+
+    @Column(nullable = false)
     private Integer ident;
+
+    @Column(nullable = false)
     private String nombre;
 
-    public Evento(Long id, String date, Integer ident, String nombre) {
+    @Column(nullable = true)
+    private String tipo;
+
+    public Evento(Long id, String date, Integer ident, String nombre, String tipo) {
         this.id = id;
         this.date = date;
         this.ident = ident;
         this.nombre = nombre;
+        this.tipo = tipo;
     }
 
-    public Evento(String date, Integer ident, String nombre) {
+    public Evento(String date, Integer ident, String nombre, String tipo) {
         this.date = date;
         this.ident = ident;
         this.nombre = nombre;
+        this.tipo = tipo;
     }
 
     public Long getId() {
@@ -51,6 +69,14 @@ public class Evento {
 
     public void setNombre(String nombre) {
         this.nombre = nombre;
+    }
+
+    public String getTipo() {
+        return tipo;
+    }
+
+    public void setTipo(String tipo) {
+        this.tipo = tipo;
     }
 
     @Override
