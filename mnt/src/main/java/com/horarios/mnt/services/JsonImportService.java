@@ -16,15 +16,15 @@ import java.nio.file.Paths;
 
 public class JsonImportService {
 
-    @Autowired
-    EventoRepository eventoRepository;
-
     public List<Evento> importData() {
         ArrayList<Evento> eventos = new ArrayList<Evento>() {};
 
         try {
             //Seleccionar el archivo
-            String pathJson = "C:\\ProgramacionCodigos\\Java\\horariosMnt\\horariosMnt\\mnt\\src\\main\\resources\\static\\test.json";
+            //Casa
+            //String pathJson = "C:\\ProgramacionCodigos\\Java\\horariosMnt\\horariosMnt\\mnt\\src\\main\\resources\\static\\test.json";
+            //Empresa
+            String pathJson = "C:\\Users\\Alejo\\Desktop\\AppHorarios\\BackEnd\\mnt\\src\\main\\resources\\static\\test.json";
 
             String contents = new String(Files.readAllBytes(Paths.get(pathJson)));
             JSONArray jsonArray = new JSONArray(contents);
@@ -42,15 +42,13 @@ public class JsonImportService {
                 evento1.setIdent(idUsuario);
                 evento1.setNombre(nombre);
                 evento1.setNombre("entrada-salida");*/
-                Evento evento1 = new Evento(date, idUsuario, nombre, "entrada-salida");
+                Evento evento1 = new Evento(0l, date, idUsuario, nombre, "entrada-salida");
                 eventos.add(evento1);
-                eventoRepository.save(evento1);
                 }
             System.out.println("Agregados " + jsonArray.length() + " datos a la base de datos");
             } catch (IOException e) {
                 e.printStackTrace();
             }
-
         return eventos;
     }
 }
