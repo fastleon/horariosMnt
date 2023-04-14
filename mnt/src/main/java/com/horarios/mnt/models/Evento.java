@@ -2,7 +2,7 @@ package com.horarios.mnt.models;
 
 import jakarta.persistence.*;
 
-import java.sql.Date;
+import java.util.Date;
 
 @Entity
 @Table(name="Eventos")
@@ -13,7 +13,7 @@ public class Evento {
     private Long id;
 
     @Column(nullable = false)
-    private String date;
+    private Date date;
 
     @Column(nullable = false)
     private Integer ident;
@@ -24,20 +24,20 @@ public class Evento {
     @Column(nullable = true)
     private String tipo;
 
-    public Evento(Long id, String date, Integer ident, String nombre, String tipo) {
+    public Evento(Long id, Date date, Integer ident, String nombre, String tipo) {
         this.id = id;
         this.date = date;
         this.ident = ident;
         this.nombre = nombre;
         this.tipo = tipo;
     }
-
-    public Evento(String date, Integer ident, String nombre, String tipo) {
+    public Evento(Date date, Integer ident, String nombre, String tipo) {
         this.date = date;
         this.ident = ident;
         this.nombre = nombre;
         this.tipo = tipo;
     }
+    public Evento() {}
 
     public Long getId() {
         return id;
@@ -47,11 +47,11 @@ public class Evento {
         this.id = id;
     }
 
-    public String getDate() {
+    public Date getDate() {
         return date;
     }
 
-    public void setDate(String date) {
+    public void setDate(Date date) {
         this.date = date;
     }
 

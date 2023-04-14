@@ -1,13 +1,10 @@
 package com.horarios.mnt.controllers;
 
-import com.horarios.mnt.models.Evento;
 import com.horarios.mnt.models.User;
-import com.horarios.mnt.services.JsonImportService;
 import com.horarios.mnt.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
@@ -17,20 +14,11 @@ import java.util.Optional;
 public class MainController {
     @Autowired
     private UserService userService;
-    private JsonImportService jsonImportService = new JsonImportService();
 
     @GetMapping("/")
     public String pruebaConexion(){
         return ("Prueba OK");
     }
-
-    //-------------------------CONTROL PARA INGRESO DE DATOS DEL JSON DE INFORMACION DEL HUELLERO
-    @GetMapping("/import-time")
-    public List<Evento> importData(){
-        return jsonImportService.importData();
-    }
-
-    //---------------------------------------------FIN-------------------------------------------
 
     @PostMapping("/addUsuario")
     public User crearUsuario(@RequestBody User user){
