@@ -9,7 +9,7 @@ import java.util.Optional;
 @Service
 public interface EventoService {
 
-    public Evento createEvento(Evento evento);
+    public void createEvento(Evento evento);
 
     public List<Evento> getEventos();
 

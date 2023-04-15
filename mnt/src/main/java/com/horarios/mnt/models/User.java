@@ -2,6 +2,9 @@ package com.horarios.mnt.models;
 
 import jakarta.persistence.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 @Entity
 @Table(name = "user_table")
 public class User {
@@ -22,6 +25,27 @@ public class User {
 
     @Column(nullable = false)
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    private List<Evento> evento = new ArrayList<>();
+
+    public User() {
+    }
+
+    public User(Long id, String nombre, String email, String alias, String password) {
+        this.id = id;
+        this.nombre = nombre;
+        this.email = email;
+        this.alias = alias;
+        this.password = password;
+    }
+
+    public User(String nombre, String email, String alias, String password) {
+        this.nombre = nombre;
+        this.email = email;
+        this.alias = alias;
+        this.password = password;
+    }
 
     public Long getId() {
         return id;

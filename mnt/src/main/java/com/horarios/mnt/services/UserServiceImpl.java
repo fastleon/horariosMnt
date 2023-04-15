@@ -1,4 +1,4 @@
-package com.horarios.mnt.services;
+/*package com.horarios.mnt.services;
 
 import com.horarios.mnt.models.User;
 import com.horarios.mnt.respositories.UserRepository;
@@ -13,7 +13,6 @@ public class UserServiceImpl implements UserService{
 
     @Autowired
     UserRepository userRepository;
-
 
     @Override
     public User createUser(User user) {
@@ -49,4 +48,9 @@ public class UserServiceImpl implements UserService{
     public void deleteUserbyId(Long id) {
         userRepository.deleteById(id);
     }
-}
+
+    @Override
+    public User GetUserByAlias(String alias) {
+        return userRepository.
+    }
+}*/

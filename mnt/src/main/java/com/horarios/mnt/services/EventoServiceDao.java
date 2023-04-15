@@ -1,21 +1,23 @@
-/*package com.horarios.mnt.services;
+package com.horarios.mnt.services;
 
 import com.horarios.mnt.models.Evento;
-import com.horarios.mnt.respositories.EventoRepository;
-import org.springframework.beans.factory.annotation.Autowired;
+import jakarta.persistence.EntityManager;
+import jakarta.persistence.PersistenceContext;
+import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
 import java.util.Optional;
 
 @Service
-public class EventoServiceImpl implements EventoService{
-    @Autowired
-    EventoRepository eventoRepository;
+@Transactional
+public class EventoServiceDao implements EventoService{
+    @PersistenceContext
+    EntityManager entityManager;
 
     @Override
-    public Evento createEvento(Evento evento) {
-        return eventoRepository.save(evento);
+    public void createEvento(Evento evento) {
+        entityManager.persist(evento);
     }
 
     @Override
@@ -37,4 +39,4 @@ public class EventoServiceImpl implements EventoService{
     public void deleteUserbyId(Long id) {
 
     }
-}*/
+}

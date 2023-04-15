@@ -1,0 +1,8 @@
+[{"id":1, "alias":"Alejandro Leon", "email":"luis.leon.mnt@gmail.com", "nombre":"Luis Leon", "password":"1234"},
+ {"id":2, "alias":"Alveiro Gordillo", "email":"luis.gordillo.mnt@gmail.com", "nombre":"Alveiro Gordillo", "password":"2345"},
+ {"id":3, "alias":"Paola Palacios", "email":"paola.palacios.mnt@gmail.com", "nombre":"Paola Palacios", "password":"34556"},
+ {"id":4, "alias":"Wilson Malagon", "email":"wilson.malagon.mnt@gmail.com", "nombre":"Wilson Malagon", "password":"4564567"},
+ {"id":5, "alias":"Wilson Rozo", "email":"wilson.rozo.mnt@gmail.com", "nombre":"Wilson Rozo", "password":"dsfsdfsd"},
+ {"id":6, "alias":"Andres Torres", "email":"almacen@microdasd", "nombre":"Andres Torres", "password":"asdas"},
+ {"id":7, "alias":"Christian Ruiz", "email":"cristian.ruiz.mnt@gmail.com", "nombre":"Christian Ruiz", "password":"asdsfsdfasdf"},
+ {"id":8, "alias":"Harrison Rivera", "email":"harrison.rivera.mnt@gmail.com", "nombre":"Harrison Rivera", "password":"asdasdas"}]

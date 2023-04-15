@@ -1,10 +1,8 @@
 package com.horarios.mnt.services;
 
-import com.horarios.mnt.models.Evento;
-import com.horarios.mnt.respositories.EventoRepository;
+import com.horarios.mnt.models.EventoNoSQL;
 import org.json.JSONArray;
 import org.json.JSONObject;
-import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.IOException;
 import java.time.Instant;
@@ -16,19 +14,22 @@ import java.nio.file.Paths;
 
 public class JsonImportService {
 
-    public List<Evento> importData() {
-        ArrayList<Evento> eventos = new ArrayList<Evento>() {};
+    public List<EventoNoSQL> importData() {
+        ArrayList<EventoNoSQL> eventos = new ArrayList<EventoNoSQL>() {};
 
         try {
             //Seleccionar el archivo
             //Casa
-            //String pathJson = "C:\\ProgramacionCodigos\\Java\\horariosMnt\\horariosMnt\\mnt\\src\\main\\resources\\static\\test.json";
+            String pathJson = "C:\\ProgramacionCodigos\\Java\\horariosMnt\\horariosMnt\\mnt\\src\\main\\resources\\static\\test.json";
             //Empresa
-            String pathJson = "C:\\Users\\Alejo\\Desktop\\AppHorarios\\BackEnd\\mnt\\src\\main\\resources\\static\\test.json";
+            //String pathJson = "C:\\Users\\Alejo\\Desktop\\AppHorarios\\BackEnd\\mnt\\src\\main\\resources\\static\\test.json";
 
+            //leer el archivo seleccionado en pathJson
             String contents = new String(Files.readAllBytes(Paths.get(pathJson)));
+            //Crear un objeto tipo jsonArray, aplica porque esperamos un array de datos Json
             JSONArray jsonArray = new JSONArray(contents);
 
+            //Leemos cada registro del archivo de texto
             for (int i = 0; i < jsonArray.length(); i++) {
                 JSONObject jsonObject = jsonArray.getJSONObject(i);
                 String tiempo = jsonObject.getString("Tiempo");
@@ -37,18 +38,14 @@ public class JsonImportService {
                 String nombre = jsonObject.getString("Nombre");
 
                 System.out.println(date + " | " + idUsuario + " | " + nombre);
-                /*Evento evento1 = new Evento();
-                evento1.setDate(date);
-                evento1.setIdent(idUsuario);
-                evento1.setNombre(nombre);
-                evento1.setNombre("entrada-salida");*/
-                Evento evento1 = new Evento(0l, date, idUsuario, nombre, "entrada-salida");
+                EventoNoSQL evento1 = new EventoNoSQL(0l, date, idUsuario, nombre, "entrada-salida");
                 eventos.add(evento1);
                 }
             System.out.println("Agregados " + jsonArray.length() + " datos a la base de datos");
             } catch (IOException e) {
                 e.printStackTrace();
             }
+        //devolvemos los eventos adquiridos
         return eventos;
     }
 }

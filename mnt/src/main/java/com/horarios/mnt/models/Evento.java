@@ -18,23 +18,25 @@ public class Evento {
     @Column(nullable = false)
     private Integer ident;
 
-    @Column(nullable = false)
-    private String nombre;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name="user_id", nullable = false)
+    private User user;
 
-    @Column(nullable = true)
     private String tipo;
 
-    public Evento(Long id, Date date, Integer ident, String nombre, String tipo) {
+
+
+    public Evento(Long id, Date date, Integer ident, User user, String tipo) {
         this.id = id;
         this.date = date;
         this.ident = ident;
-        this.nombre = nombre;
+        this.user = user;
         this.tipo = tipo;
     }
-    public Evento(Date date, Integer ident, String nombre, String tipo) {
+    public Evento(Date date, Integer ident, User user, String tipo) {
         this.date = date;
         this.ident = ident;
-        this.nombre = nombre;
+        this.user = user;
         this.tipo = tipo;
     }
     public Evento() {}
@@ -63,12 +65,12 @@ public class Evento {
         this.ident = ident;
     }
 
-    public String getNombre() {
-        return nombre;
+    public User getNombre() {
+        return user;
     }
 
-    public void setNombre(String nombre) {
-        this.nombre = nombre;
+    public void setNombre(User nombre) {
+        this.user = nombre;
     }
 
     public String getTipo() {
@@ -85,7 +87,7 @@ public class Evento {
                 "id=" + id +
                 ", date=" + date +
                 ", ident=" + ident +
-                ", nombre='" + nombre + '\'' +
+                ", nombre='" + user.getNombre() + '\'' +
                 '}';
     }
 

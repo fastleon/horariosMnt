@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="8b3ce605-8c1b-40a8-84f9-9055a4b27376" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/horariosMnt.iml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/models/EventoNoSQL.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/EventoServiceDao.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/UserServiceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/BackEnd.iml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/modules.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/modules.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/uiDesigner.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/HorariosApplication.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/HorariosApplication.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/controllers/EventosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/controllers/EventosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/controllers/MainController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/controllers/MainController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/models/Evento.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/models/Evento.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/models/User.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/models/User.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/EventoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/EventoService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/EventoServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/EventoServiceImpl.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/JsonImportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/JsonImportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/UserService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/UserService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/UserServiceImpl.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/UserServiceImpl.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="MavenImportPreferences">
+    <option name="generalSettings">
+      <MavenGeneralSettings>
+        <option name="useMavenConfig" value="true" />
+      </MavenGeneralSettings>
+    </option>
+  </component>
+  <component name="ProjectId" id="2OTTytEUT7Tg5G47ep4wQf2Fvhr" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "SHARE_PROJECT_CONFIGURATION_FILES": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CopyClassDialog.RECENTS_KEY">
+      <recent name="com.horarios.mnt.services" />
+    </key>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="8b3ce605-8c1b-40a8-84f9-9055a4b27376" name="Changes" comment="" />
+      <created>1681583831803</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1681583831803</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>jar://$MAVEN_REPOSITORY$/org/springframework/data/spring-data-commons/3.0.0/spring-data-commons-3.0.0.jar!/org/springframework/data/repository/Repository.class</url>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+</project>
