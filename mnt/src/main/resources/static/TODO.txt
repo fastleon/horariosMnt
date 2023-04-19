@@ -1,0 +1,12 @@
+-revisar que el evento ingresado no exista en la base de datos antes de guardarlo
+-->metodo para buscar por ID, fecha/hora
+-generar tipo de evento segun la hora.
+	mas temprano 	-> llegada
+	mas tarde 	-> salida
+	Si hay mas de dos registros en el día:
+	revisar que tenga mas de 5min con llegada o salida,
+		Eliminar las que tengan menos de 5minutos de diferencia
+		las restantes deben ser pares.
+			Si es par -> agregar como salida/revisar y entrada/revisar temporalmente.
+			Si es impar -> colocar como Indeterminada.
+

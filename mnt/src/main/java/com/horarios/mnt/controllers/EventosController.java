@@ -8,11 +8,9 @@ import com.horarios.mnt.services.EventoServiceDao;
 import com.horarios.mnt.services.JsonImportService;
 import com.horarios.mnt.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
@@ -37,7 +35,6 @@ public class EventosController {
         List<EventoNoSQL> eventosImportados = jsonImportService.importData();
         List<Evento> eventosGuardados = new ArrayList<Evento>();
         for (EventoNoSQL eventoNoSQL: eventosImportados) {
-            //Date date = new Date();
             //Revisar el dato para ligarlo a un usuario y revisar que no exista actualmente en la BD
             try {
                 Optional<User> user1 = userService.getUserByAlias(eventoNoSQL.getNombre());
@@ -58,6 +55,23 @@ public class EventosController {
         return eventosGuardados;
     }
 
-    //*/
+    @GetMapping("/get-events/{starDate}/{endDate}")
+    public List<Evento> getEventos(@PathVariable("starDate") String startDate, @PathVariable("endDate") String endDate){
+        System.err.println(startDate + "," + endDate);
+        try {
+            System.err.println(parseDate(startDate, "yyyy-MM-dd") + "," + parseDate(endDate, "yyyy-MM-dd"));
+            return eventoService.getEventos(parseDate(startDate, "yyyy-MM-dd"),parseDate(endDate, "yyyy-MM-dd"));
+            //return eventoService.getEventos(startDate,endDate);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+    }
+
+
+    public static Date parseDate(String dateString, String format) throws Exception {
+        SimpleDateFormat sdf = new SimpleDateFormat(format);
+        Date date = sdf.parse(dateString);
+        return date;
+    }
 
 }
