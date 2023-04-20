@@ -41,7 +41,7 @@ public class JsonImportService {
                 EventoNoSQL evento1 = new EventoNoSQL(0l, date, idUsuario, nombre, "entrada-salida");
                 eventos.add(evento1);
                 }
-            System.out.println("Agregados " + jsonArray.length() + " datos a la base de datos");
+            System.out.println("Encontrados " + jsonArray.length() + " datos en el archivo Json, pasando a inspeccionar base de datos");
             } catch (IOException e) {
                 e.printStackTrace();
             }

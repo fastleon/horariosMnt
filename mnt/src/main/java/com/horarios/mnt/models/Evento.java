@@ -24,8 +24,6 @@ public class Evento {
 
     private String tipo;
 
-
-
     public Evento(Long id, Date date, Integer ident, User user, String tipo) {
         this.id = id;
         this.date = date;

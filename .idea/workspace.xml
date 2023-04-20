@@ -5,11 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="8b3ce605-8c1b-40a8-84f9-9055a4b27376" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/mnt/src/main/resources/static/TODO.txt" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/controllers/EventosController.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/controllers/EventosController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/models/Evento.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/models/Evento.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/EventoService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/EventoService.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/EventoServiceDao.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/EventoServiceDao.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/JsonImportService.java" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/java/com/horarios/mnt/services/JsonImportService.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/mnt/src/main/resources/application.properties" beforeDir="false" afterPath="$PROJECT_DIR$/mnt/src/main/resources/application.properties" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

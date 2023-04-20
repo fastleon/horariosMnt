@@ -2,9 +2,7 @@ package com.horarios.mnt.services;
 
 import com.horarios.mnt.models.Evento;
 import com.horarios.mnt.models.User;
-import jakarta.persistence.EntityManager;
-import jakarta.persistence.PersistenceContext;
-import jakarta.persistence.TypedQuery;
+import jakarta.persistence.*;
 import jakarta.transaction.Transactional;
 import org.springframework.stereotype.Service;
 
@@ -39,10 +37,27 @@ public class EventoServiceDao implements EventoService{
     }
 
     @Override
-    public Optional<List<Evento>> getEventoByIdAndDate(Long id, Date date, Boolean isOnlyOne) {
+    public Optional<Evento> getExactEventoByIdAndDate(Long id, Date date) {
         //Buscar por id y fecha, la opcion onlyone es verdadero si se busca el dato exacto de la fecha hora,
         //falso para solo el dia
-        return Optional.empty();
+
+        //De momento solo confirmar fecha identica !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+        String query = "SELECT u FROM Evento u ";
+        query += "WHERE u.user_id = :userId AND u.date :date";
+        TypedQuery<Evento> typedQuery = entityManager.createQuery(query, Evento.class);
+        typedQuery.setParameter("userId", id);
+        typedQuery.setParameter("date", date);
+        try {
+            Evento evento = typedQuery.getSingleResult();
+            return Optional.ofNullable(evento);
+        }catch (NoResultException e) {
+            // hacer algo si no hay resultados
+            System.out.println("No se encontraron resultados");
+            return Optional.empty();
+        }catch (Exception e){
+            System.err.println("falla al crear busqueda en hibernate, funcion getExactEventoByIdAndDate");
+            return Optional.empty();
+        }
     }
 
     @Override
@@ -50,11 +65,16 @@ public class EventoServiceDao implements EventoService{
         return Optional.empty();
     }
 
+    @Override
+    public Evento getEventoById(Long id) {
+        return entityManager.find(Evento.class, id);
+    }
 
     @Override
-    public Optional<Evento> updateUser(Evento evento, Long id) {
+    public Optional<Evento> updateEvento(Evento evento) {
         return Optional.empty();
     }
+
 
     @Override
     public void deleteEventobyId(Long id) {

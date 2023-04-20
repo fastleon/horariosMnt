@@ -14,11 +14,13 @@ public interface EventoService {
 
     public List<Evento> getEventos(Date startDate, Date endDate);
 
-    public Optional<List<Evento>> getEventoByIdAndDate(Long id, Date date, Boolean isOnlyOne);
+    public Optional<Evento> getExactEventoByIdAndDate(Long id, Date date);
 
     public Optional<List<Evento>> getEventosbyDate(Date date);
 
-    public Optional<Evento> updateUser(Evento evento, Long id);
+    public Evento getEventoById(Long id);
+
+    public Optional<Evento> updateEvento(Evento evento);
 
     public void deleteEventobyId(Long id);
 

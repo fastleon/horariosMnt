@@ -3,7 +3,6 @@ package com.horarios.mnt.controllers;
 import com.horarios.mnt.models.Evento;
 import com.horarios.mnt.models.EventoNoSQL;
 import com.horarios.mnt.models.User;
-import com.horarios.mnt.services.EventoService;
 import com.horarios.mnt.services.EventoServiceDao;
 import com.horarios.mnt.services.JsonImportService;
 import com.horarios.mnt.services.UserService;
@@ -11,10 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
 import java.text.SimpleDateFormat;
-import java.util.ArrayList;
-import java.util.Date;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 @CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/eventos")
@@ -30,11 +26,11 @@ public class EventosController {
 
     //Llamado al archivo en Static folder
     @GetMapping("/import-time")
-    public List<Evento> importData(){
+    public List<Evento> importData() {
         //los temas leidos vienen sin procesar ni ligar a los datos de user en la DB
         List<EventoNoSQL> eventosImportados = jsonImportService.importData();
         List<Evento> eventosGuardados = new ArrayList<Evento>();
-        for (EventoNoSQL eventoNoSQL: eventosImportados) {
+        for (EventoNoSQL eventoNoSQL : eventosImportados) {
             //Revisar el dato para ligarlo a un usuario y revisar que no exista actualmente en la BD
             try {
                 Optional<User> user1 = userService.getUserByAlias(eventoNoSQL.getNombre());
@@ -45,7 +41,9 @@ public class EventosController {
                             user1.get(),
                             eventoNoSQL.getTipo()
                     );
-                    eventoService.createEvento(evento1);
+                    if (!eventoService.getExactEventoByIdAndDate(evento1.getNombre().getId(),evento1.getDate()).isPresent()) {
+                        eventoService.createEvento(evento1);
+                    }
                 }
             } catch (Exception e) {
                 System.err.println(e.getMessage());
@@ -56,17 +54,23 @@ public class EventosController {
     }
 
     @GetMapping("/get-events/{starDate}/{endDate}")
-    public List<Evento> getEventos(@PathVariable("starDate") String startDate, @PathVariable("endDate") String endDate){
-        System.err.println(startDate + "," + endDate);
+    public List<EventoNoSQL> getEventos(@PathVariable("starDate") String startDate, @PathVariable("endDate") String endDate) {
         try {
-            System.err.println(parseDate(startDate, "yyyy-MM-dd") + "," + parseDate(endDate, "yyyy-MM-dd"));
-            return eventoService.getEventos(parseDate(startDate, "yyyy-MM-dd"),parseDate(endDate, "yyyy-MM-dd"));
-            //return eventoService.getEventos(startDate,endDate);
+            Date newEndDate = parseDate(endDate, "yyyy-MM-dd");
+            newEndDate = modificarFecha(newEndDate,"+",1);
+            Date newStartDate = parseDate(startDate, "yyyy-MM-dd");
+            System.err.println(newStartDate + ", " + newEndDate);
+            return eventoNoSQLS(eventoService.getEventos(newStartDate, newEndDate));
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
 
+    @GetMapping("/{id}")
+    public EventoNoSQL getEventById(@PathVariable("id") Long id) {
+        Evento evento = eventoService.getEventoById(id);
+        return (eventoToJson(evento));
+    }
 
     public static Date parseDate(String dateString, String format) throws Exception {
         SimpleDateFormat sdf = new SimpleDateFormat(format);
@@ -74,4 +78,38 @@ public class EventosController {
         return date;
     }
 
+    public static EventoNoSQL eventoToJson(Evento evento) {
+        EventoNoSQL eventoNoSQL = new EventoNoSQL(
+                evento.getId(),
+                evento.getDate(),
+                evento.getIdent(),
+                evento.getNombre().getNombre(),
+                evento.getTipo()
+        );
+        return eventoNoSQL;
+    }
+
+    public static List<EventoNoSQL> eventoNoSQLS(List<Evento> eventos) {
+        List<EventoNoSQL> eventosNoSql = new ArrayList<EventoNoSQL>();
+        for (Evento evento : eventos) {
+            eventosNoSql.add(eventoToJson(evento));
+        }
+        return eventosNoSql;
+    }
+
+    public static Date modificarFecha(Date date, String modifier, Integer numDays) {
+        Calendar calendar = Calendar.getInstance();
+        calendar.setTime(date); // set the calendar time to the given date
+        Date newDate = calendar.getTime(); // get the updated date
+        System.out.println(newDate);
+
+        if (modifier == "+") {
+            calendar.add(Calendar.DAY_OF_YEAR, numDays); // add one day to the date
+        } else if (modifier == "-") {
+            calendar.add(Calendar.DAY_OF_YEAR, numDays * -1);
+        } else {
+            System.err.println("Error en la funcion modificarFecha, se devuelve la misma fecha");
+        }
+        return calendar.getTime();
+    }
 }
