@@ -37,18 +37,22 @@ public class EventoServiceDao implements EventoService{
     }
 
     @Override
-    public Optional<Evento> getExactEventoByIdAndDate(Long id, Date date) {
+    public Optional<Evento> getExactEventoByIdAndDate(Long id, Date date, User user) {
         //Buscar por id y fecha, la opcion onlyone es verdadero si se busca el dato exacto de la fecha hora,
         //falso para solo el dia
 
         //De momento solo confirmar fecha identica !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-        String query = "SELECT u FROM Evento u ";
-        query += "WHERE u.user_id = :userId AND u.date :date";
+        System.err.println("1-"+id+","+date.toString());
+        String query = "SELECT e " +
+                "FROM Evento e " +
+                "WHERE e.user.id = :userId " +
+                "AND e.date = :date";
         TypedQuery<Evento> typedQuery = entityManager.createQuery(query, Evento.class);
         typedQuery.setParameter("userId", id);
         typedQuery.setParameter("date", date);
         try {
             Evento evento = typedQuery.getSingleResult();
+            System.err.println("Encontre un resultado");
             return Optional.ofNullable(evento);
         }catch (NoResultException e) {
             // hacer algo si no hay resultados

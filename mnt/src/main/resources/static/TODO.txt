@@ -1,5 +1,6 @@
--revisar que el evento ingresado no exista en la base de datos antes de guardarlo
--->metodo para buscar por ID, fecha/hora
+-revisar que el evento ingresado no exista en la base de datos antes de guardarlo (OK)
+-->metodo para buscar por ID, fecha/hora ](OK)
+
 -generar tipo de evento segun la hora.
 	mas temprano 	-> llegada
 	mas tarde 	-> salida

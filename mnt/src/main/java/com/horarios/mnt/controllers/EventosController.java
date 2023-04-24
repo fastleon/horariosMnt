@@ -41,8 +41,12 @@ public class EventosController {
                             user1.get(),
                             eventoNoSQL.getTipo()
                     );
-                    if (!eventoService.getExactEventoByIdAndDate(evento1.getNombre().getId(),evento1.getDate()).isPresent()) {
+                    System.err.println("Revisando " + evento1.getUser().getNombre() + ", fecha: " + evento1.getDate());
+                    if (!eventoService.getExactEventoByIdAndDate(evento1.getUser().getId() , evento1.getDate() , user1.get()).isPresent() ) {
+                        System.err.println("Ingresando nuevo valor");
                         eventoService.createEvento(evento1);
+                    }else{
+                        System.err.println("valor ya existente");
                     }
                 }
             } catch (Exception e) {
@@ -83,7 +87,7 @@ public class EventosController {
                 evento.getId(),
                 evento.getDate(),
                 evento.getIdent(),
-                evento.getNombre().getNombre(),
+                evento.getUser().getNombre(),
                 evento.getTipo()
         );
         return eventoNoSQL;

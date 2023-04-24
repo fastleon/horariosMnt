@@ -63,12 +63,12 @@ public class Evento {
         this.ident = ident;
     }
 
-    public User getNombre() {
+    public User getUser() {
         return user;
     }
 
-    public void setNombre(User nombre) {
-        this.user = nombre;
+    public void setUser(User user) {
+        this.user = user;
     }
 
     public String getTipo() {
