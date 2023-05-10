@@ -15,7 +15,9 @@ public interface EventoService {
 
     public List<Evento> getEventos(Date startDate, Date endDate);
 
-    public Optional<Evento> getExactEventoByIdAndDate(Long id, Date date, User user);
+    public Optional<Evento> getExactEventoByIdAndDate(Long id, Date date);
+
+    public Optional<List<Evento>> getEventosByIdAndDate(Long id, Date date);
 
     public Optional<List<Evento>> getEventosbyDate(Date date);
 

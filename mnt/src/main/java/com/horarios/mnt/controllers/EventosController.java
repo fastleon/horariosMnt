@@ -42,7 +42,7 @@ public class EventosController {
                             eventoNoSQL.getTipo()
                     );
                     System.err.println("Revisando " + evento1.getUser().getNombre() + ", fecha: " + evento1.getDate());
-                    if (!eventoService.getExactEventoByIdAndDate(evento1.getUser().getId() , evento1.getDate() , user1.get()).isPresent() ) {
+                    if (!eventoService.getExactEventoByIdAndDate(evento1.getUser().getId() , evento1.getDate() ).isPresent() ) {
                         System.err.println("Ingresando nuevo valor");
                         eventoService.createEvento(evento1);
                     }else{
@@ -74,6 +74,29 @@ public class EventosController {
     public EventoNoSQL getEventById(@PathVariable("id") Long id) {
         Evento evento = eventoService.getEventoById(id);
         return (eventoToJson(evento));
+    }
+
+    @GetMapping("/{id}/{date}")
+    public List<EventoNoSQL> getEventById(@PathVariable("id") Long id,@PathVariable("date") String date) {
+        //Devuelve todos los eventos del día para el usuario con ese id
+        List<EventoNoSQL> eventosNoSQL = new ArrayList<EventoNoSQL>();
+        try {
+            Date searchDate = parseDate(date, "yyyy-MM-dd");
+            System.err.println("id:" + id + " fecha:" + date);
+            Optional<List<Evento>> eventos = eventoService.getEventosByIdAndDate(id, searchDate);
+            eventos.ifPresentOrElse(listaEventos -> {
+                for (Evento evento : listaEventos) {
+                    eventosNoSQL.add(eventoToJson(evento));
+                }
+            }, () -> {
+                System.err.println("No se encontró ningun evento para ese User y esa fecha");
+            });
+            return (eventosNoSQL);
+        }catch (Exception e){
+            System.err.println(e.getMessage());
+            System.err.println("No logré traer los datos de los eventos para ese id y esa fecha");
+            return (null);
+        }
     }
 
     public static Date parseDate(String dateString, String format) throws Exception {

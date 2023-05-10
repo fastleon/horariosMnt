@@ -37,11 +37,9 @@ public class EventoServiceDao implements EventoService{
     }
 
     @Override
-    public Optional<Evento> getExactEventoByIdAndDate(Long id, Date date, User user) {
-        //Buscar por id y fecha, la opcion onlyone es verdadero si se busca el dato exacto de la fecha hora,
-        //falso para solo el dia
+    public Optional<Evento> getExactEventoByIdAndDate(Long id, Date date) {
+        //Se busca la fecha y hora exacta para ese usuario, usado en funcion donde se guardan o no nuevos eventos a la BD
 
-        //De momento solo confirmar fecha identica !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
         System.err.println("1-"+id+","+date.toString());
         String query = "SELECT e " +
                 "FROM Evento e " +
@@ -60,6 +58,30 @@ public class EventoServiceDao implements EventoService{
             return Optional.empty();
         }catch (Exception e){
             System.err.println("falla al crear busqueda en hibernate, funcion getExactEventoByIdAndDate");
+            return Optional.empty();
+        }
+    }
+
+    @Override
+    public Optional<List<Evento>> getEventosByIdAndDate(Long id, Date date) {
+        System.err.println("1-"+id+","+date.toString());
+        String query = "SELECT e " +
+                "FROM Evento e " +
+                "WHERE e.user.id = :userId " +
+                "AND date(e.date) = :date";
+        TypedQuery<Evento> typedQuery = entityManager.createQuery(query, Evento.class);
+        typedQuery.setParameter("userId", id);
+        typedQuery.setParameter("date", date);
+        try {
+            List<Evento> eventos = typedQuery.getResultList();
+            System.err.println("Encontre resultados, " + eventos.size());
+            return Optional.ofNullable(eventos);
+        }catch (NoResultException e) {
+            // hacer algo si no hay resultados
+            System.out.println("No se encontraron resultados");
+            return Optional.empty();
+        }catch (Exception e){
+            System.err.println("falla al crear busqueda en hibernate, funcion getEventosByIdAndDate");
             return Optional.empty();
         }
     }
